@@ -12,18 +12,16 @@
    git clone https://github.com/username/plesk-react-go.git
    cd plesk-react-go
 ติดตั้ง dependencies สำหรับ Frontend:
+    ```bash
+   cd frontend
+   npm install
 
-bash
-Copy code
-cd frontend
-npm install
 ติดตั้ง dependencies สำหรับ Backend:
-
-bash
-Copy code
-cd ../backend
-go mod init backend
-go mod tidy
+   ```bash
+   cd ../backend
+   go mod init backend
+   go mod tidy
+   ```bash
 
 การรันโปรเจกต์
 1. รัน React Frontend
