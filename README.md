@@ -11,46 +11,6 @@
    ```bash
    git clone https://github.com/username/plesk-react-go.git
    cd plesk-react-go
-2. ติดตั้ง dependencies สำหรับ Frontend:
-3. 
-cd frontend
-npm install
-4. ติดตั้ง dependencies สำหรับ Backend:
-
-cd ../backend
-go mod init backend
-go mod tidy
-
-5. การรันโปรเจกต์
-1. รัน React Frontend
-ไปที่โฟลเดอร์ frontend:
-
-
-cd frontend
-เริ่มต้นเซิร์ฟเวอร์ React:
-
-
-npm start
-เปิดเบราว์เซอร์และไปที่ http://localhost:3000 เพื่อดูหน้าเว็บ
-
-
-นี่คือไฟล์ README.md ที่เขียนเป็นภาษาไทยสำหรับโปรเจกต์ของคุณ:
-
-markdown
-Copy code
-# Plesk-react-go
-
-โปรเจกต์นี้เป็นตัวอย่างการใช้งานร่วมกันระหว่าง **React Frontend** และ **Go Backend** เพื่อสร้างเว็บแอปพลิเคชันที่สามารถรันและใช้งานบนเซิร์ฟเวอร์ Plesk ได้
-
----
-
-## การเริ่มต้นใช้งาน
-
-### 1. ติดตั้งโปรเจกต์
-1. คลอนโปรเจกต์นี้จาก GitHub:
-   ```bash
-   git clone https://github.com/username/plesk-react-go.git
-   cd plesk-react-go
 ติดตั้ง dependencies สำหรับ Frontend:
 
 bash
