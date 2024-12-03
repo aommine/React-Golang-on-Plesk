@@ -4,50 +4,86 @@ import "./App.css";
 function App() {
   return (
     <div className="app-container">
-      <header className="header">
-        <h1>React และ Go กับ Plesk</h1>
-        <p>คู่มือฉบับเต็มสำหรับการติดตั้งระบบ Full Stack บน Bangmod Cloud</p>
+      <header className="app-header">
+        <h1>คู่มือติดตั้งระบบ Plesk บน Ubuntu Server 20.04</h1>
       </header>
-      <main className="content">
-        <section className="intro">
-          <h2>เริ่มต้นใช้งานระบบ</h2>
-          <p>
-            ระบบนี้ออกแบบมาเพื่อช่วยให้คุณใช้ React เป็น Frontend และ Go เป็น
-            Backend พร้อมกับโฮสต์บน Plesk ของ Bangmod Enterprise ได้อย่างราบรื่น
-          </p>
+
+      <main className="app-content">
+        <section>
+          <h2>1. ทำการ Update Server</h2>
+          <pre>
+            <code>sudo apt update</code>
+          </pre>
+          <pre>
+            <code>sudo apt upgrade</code>
+          </pre>
         </section>
 
-        <section className="steps">
-          <h2>ขั้นตอนการติดตั้ง</h2>
-          <div className="step">
-            <h3>1. ตั้งค่า React Frontend</h3>
-            <p>
-              ใช้คำสั่ง <code>npx create-react-app</code> และรัน
-              <code>npm run build</code> เพื่อสร้างไฟล์ Production
-            </p>
-          </div>
-          <div className="step">
-            <h3>2. ตั้งค่า Go Backend</h3>
-            <p>
-              เขียน API ใน Go และตั้งค่าให้รองรับคำขอ HTTP ผ่าน Plesk
-              Reverse Proxy
-            </p>
-          </div>
-          <div className="step">
-            <h3>3. เชื่อม Frontend และ Backend</h3>
-            <p>
-              ใช้ <code>fetch</code> ใน React เพื่อเรียก API จาก Go
-              และเชื่อมต่อข้อมูล
-            </p>
-          </div>
+        <section>
+          <h2>2. ติดตั้ง Apache Web Server</h2>
+          <pre>
+            <code>sudo apt install apache2</code>
+          </pre>
+          <pre>
+            <code>sudo start apache2</code>
+          </pre>
+          <pre>
+            <code>sudo systemctl status apache2</code>
+          </pre>
+        </section>
+
+        <section>
+          <h2>3. ดาวน์โหลดและติดตั้ง Plesk Control Panel</h2>
+          <pre>
+            <code>wget http://autoinstall.plesk.com/plesk-installer</code>
+          </pre>
+          <h2>4. ยกระดับสิทธิ์เพื่อให้ Run ไฟล์ได้</h2>
+          <pre>
+            <code>sudo chmod 755 plesk-installer</code>
+          </pre>
+          <h2>5. Run ตัว Installer</h2>
+          <pre>
+            <code>sudo ./plesk-installer</code>
+          </pre>
+        </section>
+
+        <section>
+          <h2>6. ทำการ Set Username และ Password</h2>
+          <pre>
+            <code>sudo plesk bin &lt;username&gt; --set-password -passwd &lt;password&gt;</code>
+          </pre>
+        </section>
+
+        <section>
+          <h2>7. เปิด Port 3363</h2>
+          <pre>
+            <code>sudo ufw allow 8443/tcp</code>
+          </pre>
+          <pre>
+            <code>sudo ufw reload</code>
+          </pre>
+        </section>
+
+        <section>
+          <h2>8. ลองเข้าผ่าน Web Browser</h2>
+          <pre>
+            <code>http://&lt;IP Address ของ Linux&gt;:8443</code>
+          </pre>
+          <img src="https://github.com/aommine/React-Golang-on-Plesk/blob/main/img/1.png" alt="Plesk Login" className="image-preview" />
+          <p>ใส่ Username และ Password ที่ตั้งไว้</p>
+        </section>
+
+        <section className="download-section">
+          <h3>คู่มือการใช้งาน</h3>
+          <a
+            href="https://github.com/aommine/my-react-app/blob/main/%E0%B8%84%E0%B8%B9%E0%B9%88%E0%B8%A1%E0%B8%B7%E0%B8%AD%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%83%E0%B8%8A%E0%B9%89%E0%B8%87%E0%B8%B2%E0%B8%99%20Plesk-react-go.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            ดาวน์โหลดคู่มือการใช้งาน Plesk-react-go (PDF)
+          </a>
         </section>
       </main>
-      <footer className="footer">
-        <p>
-          © 2024 Bangmod Enterprise | สำหรับคำถามเพิ่มเติม{" "}
-          <a href="https://bangmod.cloud">คลิกที่นี่</a>
-        </p>
-      </footer>
     </div>
   );
 }
