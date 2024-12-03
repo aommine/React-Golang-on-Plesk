@@ -160,7 +160,7 @@ http://<IP เครื่อง Linux>:8443
             `}
           />
         </section>
-        /* ส่วนใหม่: ตั้งค่า Cronjob */
+        {/*ตั้งค่า Cronjob */}
         <section>
           <h2>ตั้งค่า Cronjob</h2>
           <div className="image-section">
@@ -174,7 +174,7 @@ http://<IP เครื่อง Linux>:8443
           </div>
           <CodeSnippet code={`# ตัวอย่างคำสั่ง Cron`} />
         </section>
-        /* ส่วนใหม่: การตั้งค่าของ Apache */
+        {/*การตั้งค่าของ Apache */}
         <section>
           <h2>การตั้งค่าของ Apache (Virtual Host)</h2>
           <h3>เปิดไฟล์การตั้งค่าของ Apache</h3>
@@ -193,12 +193,89 @@ http://<IP เครื่อง Linux>:8443
             code={`sudo systemctl reload apache2\nsudo systemctl restart apache2`}
           />
         </section>
-        /* ส่วนใหม่: ติดตั้งภาษา Golang */
+        {/* ติดตั้งภาษา Golang */}
         <section>
           <h2>ติดตั้งภาษา Golang</h2>
           <CodeSnippet code={`sudo apt install golang-go -y`} />
           <h3>ตรวจสอบเวอร์ชันของ Golang</h3>
           <CodeSnippet code={`go version`} />
+        </section>
+        <section>
+          <h2>ทดสอบ Website</h2>
+          <p>เข้าไปในโฟลเดอร์ที่เก็บ <code>main.go</code></p>
+          <CodeSnippet code={`go run main.go`} />
+          <div className="image-section">
+            <img
+              src="https://github.com/aommine/React-Golang-on-Plesk/blob/main/img/14.png"
+              alt="Run Backend Server"
+            />
+            <blockquote>จะมีข้อความแจ้งว่าเซิร์ฟเวอร์กำลังทำงาน</blockquote>
+          </div>
+          <p>
+            ทดสอบเว็บไซต์โดยเข้า <code>http://&lt;ชื่อโดเมน&gt;</code> เพื่อดูว่าทำงานได้หรือไม่
+          </p>
+          <div className="image-section">
+            <img
+              src="https://github.com/aommine/React-Golang-on-Plesk/blob/main/img/15.png"
+              alt="Website Testing"
+            />
+            <blockquote>สามารถเข้าได้ 😀🎉</blockquote>
+          </div>
+        </section>
+        <section>
+          <h2>แก้ไขปัญหา Cross-Origin Resource Sharing (CORS)</h2>
+          <div className="image-section">
+            <img
+              src="https://github.com/aommine/React-Golang-on-Plesk/blob/main/img/16.png"
+              alt="แก้ไข CORS"
+            />
+            <blockquote>เพิ่ม Header สำหรับการอนุญาต CORS ในโค้ด Go backend</blockquote>
+          </div>
+          <CodeSnippet
+            code={`http.HandleFunc("/api/hello", func(w http.ResponseWriter, r *http.Request) {
+          w.Header().Set("Content-Type", "application/json")
+          w.Header().Set("Access-Control-Allow-Origin", "*")
+          fmt.Fprintf(w, \`{"message": "Hello from Go Backend!"}\`)
+        })`}
+          />
+          <p>เข้า Postman พิมพ์</p>
+          <CodeSnippet code={`http://<ชื่อโดเมน>/api/hello`} />
+          <p>เลือก Method <strong>GET</strong> เพื่อทดสอบ API</p>
+          <div className="image-section">
+            <img
+              src="https://github.com/aommine/React-Golang-on-Plesk/blob/main/img/17.png"
+              alt="Postman Test"
+            />
+            <blockquote>ใช้ GET เพื่อดึงข้อมูลมาได้</blockquote>
+          </div>
+        </section>
+        <section>
+          <h2>ลองใช้ curl เพื่อทดสอบ API</h2>
+          <p>ใช้คำสั่งใน Command Prompt</p>
+          <CodeSnippet code={`curl http://<ip เครื่อง Ubuntu>:8080/api/hello`} />
+          <div className="image-section">
+            <img
+              src="https://github.com/aommine/React-Golang-on-Plesk/blob/main/img/18.png"
+              alt="Curl Command Test"
+            />
+            <blockquote>สำเร็จ 🫡</blockquote>
+          </div>
+        </section>
+        <section>
+          <h2>Feedback</h2>
+          <p>
+            If you have any feedback, please reach out to us at{" "}
+            <a href="mailto:Chanayut.TH@bangmod.co.th">Chanayut.TH@bangmod.co.th</a>
+          </p>
+          <p>
+            คู่มือการใช้งานสำหรับโปรเจกต์นี้สามารถดาวน์โหลดได้ที่ลิงก์ด้านล่าง:
+          </p>
+          <a
+            href="https://github.com/aommine/my-react-app/blob/main/%E0%B8%84%E0%B8%B9%E0%B9%88%E0%B8%A1%E0%B8%B7%E0%B8%AD%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%83%E0%B8%8A%E0%B9%89%E0%B8%87%E0%B8%B2%E0%B8%99%20Plesk-react-go.pdf"
+            download
+          >
+            ดาวน์โหลดคู่มือการใช้งาน Plesk-react-go (PDF)
+          </a>
         </section>
       </main>
     </div>
