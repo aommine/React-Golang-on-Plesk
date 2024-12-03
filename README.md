@@ -44,7 +44,7 @@ Run ตัว installer
 ```bash
   sudo plesk bin <username> --set-password -passwd <password>
 ```
-เปิด Port 3363
+เปิด Port 8443
 
 ```bash
   sudo ufw allow 8443/tcp 
