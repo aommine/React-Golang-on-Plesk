@@ -142,6 +142,64 @@ http://<IP เครื่อง Linux>:8443
             <blockquote>Upload File “main.go ของเรา”</blockquote>
           </div>
         </section>
+        <section>
+          <h2>ตั้งค่า Reverse Proxy สำหรับ Backend</h2>
+          <div className="image-section">
+            <img
+              src="https://github.com/aommine/React-Golang-on-Plesk/blob/main/img/8.png"
+              alt="Reverse Proxy Settings"
+            />
+            <blockquote>
+              ไปที่ Plesk Dashboard เลือก Hosting & DNS &gt;&gt; Apache & nginx
+            </blockquote>
+          </div>
+          <CodeSnippet
+            code={`
+              ProxyPass /api http://127.0.0.1:8080/
+              ProxyPassReverse /api http://127.0.0.1:8080/
+            `}
+          />
+        </section>
+        /* ส่วนใหม่: ตั้งค่า Cronjob */
+        <section>
+          <h2>ตั้งค่า Cronjob</h2>
+          <div className="image-section">
+            <img
+              src="https://github.com/aommine/React-Golang-on-Plesk/blob/main/img/10.png"
+              alt="Cronjob Tools"
+            />
+            <blockquote>
+              ไปที่ Tools & Setting เลือก Scheduled Tasks (Cron jobs)
+            </blockquote>
+          </div>
+          <CodeSnippet code={`# ตัวอย่างคำสั่ง Cron`} />
+        </section>
+        /* ส่วนใหม่: การตั้งค่าของ Apache */
+        <section>
+          <h2>การตั้งค่าของ Apache (Virtual Host)</h2>
+          <h3>เปิดไฟล์การตั้งค่าของ Apache</h3>
+          <CodeSnippet code={`cd /etc/apache2/sites-available/ชื่อโดเมน.conf`} />
+          <h3>แก้ไขไฟล์</h3>
+          <CodeSnippet
+            code={`
+              DocumentRoot /var/www/vhosts/ชื่อโดเมน/httpdocs
+              ProxyPreserveHost On
+              ProxyPass /api http://<ip เครื่อง Ubuntu>:8080/
+              ProxyPassReverse /api http://<ip เครื่อง Ubuntu>:8080/
+            `}
+          />
+          <h3>Restart Apache</h3>
+          <CodeSnippet
+            code={`sudo systemctl reload apache2\nsudo systemctl restart apache2`}
+          />
+        </section>
+        /* ส่วนใหม่: ติดตั้งภาษา Golang */
+        <section>
+          <h2>ติดตั้งภาษา Golang</h2>
+          <CodeSnippet code={`sudo apt install golang-go -y`} />
+          <h3>ตรวจสอบเวอร์ชันของ Golang</h3>
+          <CodeSnippet code={`go version`} />
+        </section>
       </main>
     </div>
   );
