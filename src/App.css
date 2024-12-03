@@ -1,84 +1,19 @@
-/* ตั้งค่าเบื้องต้น */
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f0f8ff;
-  color: #333;
-  margin: 0;
-  padding: 0;
-}
-
-.App {
-  padding: 20px;
-  max-width: 800px;
-  margin: auto;
-}
-
-header {
+/* เพิ่มส่วนของรูปภาพ */
+.image-section {
+  margin: 20px 0;
   text-align: center;
-  margin-bottom: 30px;
 }
 
-header h1 {
-  color: #0077b6;
-}
-
-/* สำหรับแต่ละขั้นตอน */
-.step {
-  margin-bottom: 30px;
-}
-
-.step h2 {
-  color: #0096c7;
+.image-section img {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid #ccc;
+  border-radius: 8px;
   margin-bottom: 10px;
 }
 
-/* สำหรับบล็อกโค้ด */
-.code-block {
-  position: relative;
-  background-color: #e0f7fa;
-  border: 1px solid #b2ebf2;
-  border-radius: 8px;
-  padding: 16px;
-  margin: 16px 0;
-  overflow: auto;
-}
-
-pre {
+.image-section blockquote {
+  color: #555;
+  font-style: italic;
   margin: 0;
-  font-family: "Courier New", Courier, monospace;
-  color: #00796b;
-}
-
-/* ปุ่ม Copy */
-.copy-button {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  background-color: #00796b;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  padding: 6px 12px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.copy-button:hover {
-  background-color: #004d40;
-}
-
-/* ลิงก์ดาวน์โหลด */
-.manual {
-  text-align: center;
-  margin-top: 20px;
-}
-
-.download-link {
-  color: #0056d6;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.download-link:hover {
-  text-decoration: underline;
 }

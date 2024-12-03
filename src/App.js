@@ -7,7 +7,7 @@ const CodeSnippet = ({ code }) => {
   const handleCopy = () => {
     navigator.clipboard.writeText(code).then(() => {
       setIsCopied(true);
-      setTimeout(() => setIsCopied(false), 2000); // แสดงข้อความ "Copied!" 2 วินาที
+      setTimeout(() => setIsCopied(false), 2000);
     });
   };
 
@@ -73,27 +73,78 @@ http://<IP เครื่อง Linux>:8443
         <h1>คู่มือการติดตั้งระบบ Plesk</h1>
       </header>
       <main>
-        {steps.map((step, index) => (
-          <div key={index} className="step">
-            <h2>{step.title}</h2>
-            <CodeSnippet code={step.code.trim()} />
+        <section>
+          <h2>ขั้นตอนการติดตั้ง</h2>
+          {steps.map((step, index) => (
+            <div key={index} className="step">
+              <h3>{step.title}</h3>
+              <CodeSnippet code={step.code.trim()} />
+            </div>
+          ))}
+          <div className="image-section">
+            <h3>ตัวอย่างการเข้าผ่าน Web Browser</h3>
+            <img
+              src="https://github.com/aommine/React-Golang-on-Plesk/blob/main/img/1.png"
+              alt="Login Plesk"
+            />
+            <blockquote>ใส่ Username และ Password ที่ตั้งไว้</blockquote>
           </div>
-        ))}
-        <div className="manual">
-          <h2>ดาวน์โหลดคู่มือการใช้งาน:</h2>
-          <a
-            href="https://github.com/aommine/my-react-app/blob/main/%E0%B8%84%E0%B8%B9%E0%B9%88%E0%B8%A1%E0%B8%B7%E0%B8%AD%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%83%E0%B8%8A%E0%B9%89%E0%B8%87%E0%B8%B2%E0%B8%99%20Plesk-react-go.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="download-link"
-          >
-            ดาวน์โหลดคู่มือ Plesk-react-go (PDF)
-          </a>
-        </div>
+        </section>
+        <section>
+          <h2>การ Deploy บน Plesk</h2>
+          <div className="image-section">
+            <img
+              src="https://github.com/aommine/React-Golang-on-Plesk/blob/main/img/2.png"
+              alt="Go to Path App"
+            />
+            <blockquote>
+              ไปที่หน้า Path App ที่ต้องการ Deploy &gt;&gt; build
+              <br />
+              คลิกขวาเลือกไฟล์ทั้งหมด เลือก Compress to Zip File
+            </blockquote>
+          </div>
+          <div className="image-section">
+            <img
+              src="https://github.com/aommine/React-Golang-on-Plesk/blob/main/img/3.png"
+              alt="Plesk File Manager"
+            />
+            <blockquote>ไปที่หน้า Dashboard Plesk เลือก File</blockquote>
+          </div>
+          <div className="image-section">
+            <img
+              src="https://github.com/aommine/React-Golang-on-Plesk/blob/main/img/4.png"
+              alt="Upload File"
+            />
+            <blockquote>
+              ไปที่ Home directory เลือก httpdocs กดเครื่องหมาย + แล้วเลือก Upload
+              File
+            </blockquote>
+          </div>
+          <div className="image-section">
+            <img
+              src="https://github.com/aommine/React-Golang-on-Plesk/blob/main/img/5.png"
+              alt="Extract File"
+            />
+            <blockquote>เลือก Zip file ที่ Compress ไว้ กด Archive &gt;&gt; Extract Files</blockquote>
+          </div>
+          <div className="image-section">
+            <img
+              src="https://github.com/aommine/React-Golang-on-Plesk/blob/main/img/6.png"
+              alt="Create Go Backend Folder"
+            />
+            <blockquote>สร้าง Folder ชื่อ go_backend</blockquote>
+          </div>
+          <div className="image-section">
+            <img
+              src="https://github.com/aommine/React-Golang-on-Plesk/blob/main/img/7.png"
+              alt="Upload Main.go"
+            />
+            <blockquote>Upload File “main.go ของเรา”</blockquote>
+          </div>
+        </section>
       </main>
     </div>
   );
 };
 
 export default App;
-
