@@ -1,70 +1,83 @@
-# Getting Started with Create React App
+# Plesk-react-go
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+โปรเจกต์นี้เป็นตัวอย่างการใช้งานร่วมกันระหว่าง **React Frontend** และ **Go Backend** เพื่อสร้างเว็บแอปพลิเคชันที่สามารถรันและใช้งานบนเซิร์ฟเวอร์ Plesk ได้
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## การเริ่มต้นใช้งาน
 
-### `npm start`
+### 1. ติดตั้งโปรเจกต์
+1. คลอนโปรเจกต์นี้จาก GitHub:
+   ```bash
+   git clone https://github.com/username/plesk-react-go.git
+   cd plesk-react-go
+ติดตั้ง dependencies สำหรับ Frontend:
+    ```bash
+   cd frontend
+   npm install
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+ติดตั้ง dependencies สำหรับ Backend:
+    ```bash
+   cd ../backend
+   go mod init backend
+   go mod tidy
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+การรันโปรเจกต์
+   1. รัน React Frontend
+   ไปที่โฟลเดอร์ frontend:
+   
+   
+   cd frontend
+   เริ่มต้นเซิร์ฟเวอร์ React:
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+   npm start
+   เปิดเบราว์เซอร์และไปที่ http://localhost:3000 เพื่อดูหน้าเว็บ
 
-### `npm run build`
+2. รัน Go Backend
+ไปที่โฟลเดอร์ backend:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+   cd ../backend
+   เริ่มต้นเซิร์ฟเวอร์ Go:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+   go run main.go
+   เซิร์ฟเวอร์จะรันที่ http://localhost:8080
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+การทดสอบ API
+   คุณสามารถทดสอบ API ผ่านเครื่องมือ Postman หรือ cURL โดยใช้ URL ด้านล่าง:
+   
+   API Endpoint: http://localhost:8080/api/hello
+   ตัวอย่างการทดสอบด้วย curl:
+   
+   curl http://localhost:8080/api/hello
+   การ Deploy บนเซิร์ฟเวอร์ Plesk
+1. อัปโหลดไฟล์ Frontend
+   สร้างโฟลเดอร์ในเซิร์ฟเวอร์ Plesk (เช่น /var/www/html/frontend)
+   Build React App:
+   
+   cd frontend
+   npm run build
+   อัปโหลดโฟลเดอร์ build ไปยังโฟลเดอร์ในเซิร์ฟเวอร์
+2. อัปโหลดไฟล์ Backend
+   สร้างโฟลเดอร์ในเซิร์ฟเวอร์สำหรับ Go Backend (เช่น /var/www/html/backend)
+   อัปโหลดไฟล์ทั้งหมดในโฟลเดอร์ backend ไปยังโฟลเดอร์ที่สร้างไว้
+   รันเซิร์ฟเวอร์ Go โดยใช้คำสั่ง:
+   
+   go run main.go
+3. ตั้งค่าการ Proxy
+   ใน Plesk ให้ตั้งค่า Apache Proxy เพื่อให้ URL /api/ ชี้ไปยัง Go Backend:
+   
+   apache
+   
+   ProxyPass /api/ http://localhost:8080/api/
+   ProxyPassReverse /api/ http://localhost:8080/api/
+   รีสตาร์ท Apache:
+   sudo service apache2 restart
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# Plesk-react-go
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+   คู่มือการใช้งานสำหรับโปรเจกต์นี้สามารถดาวน์โหลดได้ที่ลิงก์ด้านล่าง:
+   
+   [ดาวน์โหลดคู่มือการใช้งาน Plesk-react-go (PDF)](https://github.com/aommine/my-react-app/blob/main/%E0%B8%84%E0%B8%B9%E0%B9%88%E0%B8%A1%E0%B8%B7%E0%B8%AD%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%83%E0%B8%8A%E0%B9%89%E0%B8%87%E0%B8%B2%E0%B8%99%20Plesk-react-go.pdf)
