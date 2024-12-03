@@ -1,54 +1,84 @@
-.app-container {
+/* ตั้งค่าเบื้องต้น */
+body {
   font-family: Arial, sans-serif;
-  line-height: 1.6;
+  background-color: #f0f8ff;
   color: #333;
-  background-color: #f0f8ff; /* สีฟ้าอ่อน */
   margin: 0;
   padding: 0;
 }
 
-.app-header {
-  background-color: #007bff; /* สีฟ้าเข้ม */
-  color: white;
+.App {
   padding: 20px;
+  max-width: 800px;
+  margin: auto;
+}
+
+header {
   text-align: center;
+  margin-bottom: 30px;
 }
 
-.app-content {
-  padding: 20px;
+header h1 {
+  color: #0077b6;
 }
 
-h1, h2, h3 {
-  color: #0056b3;
+/* สำหรับแต่ละขั้นตอน */
+.step {
+  margin-bottom: 30px;
+}
+
+.step h2 {
+  color: #0096c7;
+  margin-bottom: 10px;
+}
+
+/* สำหรับบล็อกโค้ด */
+.code-block {
+  position: relative;
+  background-color: #e0f7fa;
+  border: 1px solid #b2ebf2;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 16px 0;
+  overflow: auto;
 }
 
 pre {
-  background: #e6f7ff;
-  padding: 10px;
-  border-left: 4px solid #007bff;
-  overflow-x: auto;
+  margin: 0;
+  font-family: "Courier New", Courier, monospace;
+  color: #00796b;
 }
 
-pre code {
-  font-family: "Courier New", monospace;
-}
-
-.image-preview {
-  display: block;
-  max-width: 100%;
-  margin: 20px 0;
-  border: 2px solid #007bff;
-}
-
-.download-section a {
-  display: inline-block;
-  background: #007bff;
+/* ปุ่ม Copy */
+.copy-button {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background-color: #00796b;
   color: white;
-  padding: 10px 15px;
-  text-decoration: none;
-  border-radius: 5px;
+  border: none;
+  border-radius: 4px;
+  padding: 6px 12px;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
-.download-section a:hover {
-  background: #0056b3;
+.copy-button:hover {
+  background-color: #004d40;
+}
+
+/* ลิงก์ดาวน์โหลด */
+.manual {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.download-link {
+  color: #0056d6;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.download-link:hover {
+  text-decoration: underline;
 }
