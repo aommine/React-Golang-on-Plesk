@@ -1,9 +1,10 @@
-###Code Blocks (multi-language) & highlighting
-                
-####Inline code
+## Deployment
 
-`$ npm install marked`
-# Plesk-react-go
+To deploy this project run
+
+```bash
+  npm run deploy
+```
 
    คู่มือการใช้งานสำหรับโปรเจกต์นี้สามารถดาวน์โหลดได้ที่ลิงก์ด้านล่าง:
    
